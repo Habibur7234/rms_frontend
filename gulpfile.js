@@ -7,45 +7,45 @@ const browserSync = require('browser-sync').create();
 
 //scss to css
 function style() {
-  return gulp
-    .src("assets/scss/**.scss", { sourcemaps: true })
-    .pipe(
-      sass({
-        //outputStyle: "compressed",
-      }).on("error", sass.logError)
-    )
-    .pipe(autoprefixer("last 2 versions"))
-    .pipe(gulp.dest("assets/css", { sourcemaps: "." }))
-    .pipe(browserSync.reload({ stream: true }));
+    return gulp
+        .src("assets/scss/**.scss", { sourcemaps: true })
+        .pipe(
+            sass({
+                //outputStyle: "compressed",
+            }).on("error", sass.logError)
+        )
+        .pipe(autoprefixer("last 2 versions"))
+        .pipe(gulp.dest("assets/css", { sourcemaps: "." }))
+        .pipe(browserSync.reload({ stream: true }));
 }
 
 // pug to html
 function html() {
-  return gulp
-    .src("assets/pug/pages/template/landing-page.pug")
-    .pipe(
-      pug({
-        pretty: true,
-      })
-    )
-    .on("error", console.error.bind(console))
-    .pipe(gulp.dest("template"))
-    .pipe(
-      browserSync.reload({
-        stream: true, 
-      })
-    );
+    return gulp
+        .src("assets/pug/pages/template/landing-page.pug")
+        .pipe(
+            pug({
+                pretty: true,
+            })
+        )
+        .on("error", console.error.bind(console))
+        .pipe(gulp.dest("template"))
+        .pipe(
+            browserSync.reload({
+                stream: true,
+            })
+        );
 }
-  
+
 // Watch function
 function watch() {
-  browserSync.init({
-    proxy: "localhost/Enzo-admin/template/landing-page.html"
-  });
-  gulp.watch("assets/scss/**/**.scss", style);
-  gulp.watch("assets/pug/pages/document/**.pug", html);
-  gulp.watch("./*.html").on("change", browserSync.reload);
-  gulp.watch("assets/css/*.css").on("change", browserSync.reload);
+    browserSync.init({
+        proxy: "localhost:63342/rms_System_frontend/template/index.html"
+    });
+    gulp.watch("assets/scss/**/**.scss", style);
+    gulp.watch("assets/pug/pages/document/**.pug", html);
+    gulp.watch("./*.html").on("change", browserSync.reload);
+    gulp.watch("assets/css/*.css").on("change", browserSync.reload);
 }
 
 exports.style = style;

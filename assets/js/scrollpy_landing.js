@@ -21,8 +21,8 @@ $("#sidebar-menu ul li a[href^='#']").on('click', function(e) {
 
 
 // on scroll
-let sidebar-menuLinks = document.querySelectorAll("nav ul li a");
-let mainSections = document.querySelectorAll(".highlight-on-scroll");
+// let sidebar-menuLinks = document.querySelectorAll("nav ul li a");
+// let mainSections = document.querySelectorAll(".highlight-on-scroll");
 
 
 let lastId;
